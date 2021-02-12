@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   label: {
     color: '#fff',
     fontFamily: 'sans-serif',
-    fontSize: 26,
+    fontSize: 22,
     fontWeight: '700',
     textAlign: 'center',
     textTransform: 'uppercase',

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif-condensed',
     textTransform: 'uppercase',
     backgroundColor: 'rgba(0,0,0,0.5)',
-    marginBottom: 30,
+    marginTop: 50,
   },
 });
 
