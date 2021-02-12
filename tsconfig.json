@@ -37,5 +37,6 @@
       "@src/*": ["src/*"]
     }
   },
-  "include": ["src/**/*", "types/jest.d.ts"]
+  "include": ["src/**/*", "types/ambient.d.ts", "types/jest.d.ts"],
+  "exclude": ["node_modules"]
 }
