@@ -15,12 +15,10 @@ const StartScreen = () => (
   <SafeAreaView style={styles.container}>
     <ImageBackground source={background} style={styles.backgroundImage}>
       <Header title="Test your Geo Knowlage" />
-      <TouchableOpacity>
-        <Text>rules</Text>
-      </TouchableOpacity>
       {LEVELS.map((level) => (
         <CustomButton label={level} clickHandler={() => {}} key={level} />
       ))}
+      <CustomButton label="Rules" clickHandler={() => {}} secondary />
     </ImageBackground>
   </SafeAreaView>
 );
