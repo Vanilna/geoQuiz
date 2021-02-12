@@ -9,6 +9,8 @@ const styles = StyleSheet.create({
     padding: 30,
     fontFamily: 'sans-serif-condensed',
     textTransform: 'uppercase',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    marginBottom: 30,
   },
 });
 

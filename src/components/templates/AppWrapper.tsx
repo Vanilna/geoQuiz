@@ -7,7 +7,7 @@ import StartScreen from '@pages/StartScreen';
 const AppWrapper: React.FC = (): JSX.Element => {
   return (
     <ApolloProvider client={client}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar backgroundColor="#000" barStyle="light-content" />
       <SafeAreaView>
         <StartScreen />
       </SafeAreaView>
