@@ -6,7 +6,7 @@ import CustomButton from '@atoms/CustomButton';
 import { LEVELS } from '@src/constants/index';
 import styles from './styles';
 
-const StartScreen = () => (
+const StartScreen: React.FC = (): JSX.Element => (
   <SafeAreaView style={styles.container}>
     <ImageBackground source={background} style={styles.backgroundImage}>
       <Header title="Test your Geo Knowlage" />
