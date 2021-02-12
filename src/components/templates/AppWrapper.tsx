@@ -1,15 +1,14 @@
 import React from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
 import { ApolloProvider } from '@apollo/client';
+import { NavigationContainer } from '@react-navigation/native';
 import client from '@gql/client';
-import StartScreen from '@pages/StartScreen';
+import MainStack from '@navigation/ManeStack';
 
 const AppWrapper: React.FC = (): JSX.Element => (
   <ApolloProvider client={client}>
-    <StatusBar backgroundColor="#000" barStyle="light-content" />
-    <SafeAreaView>
-      <StartScreen />
-    </SafeAreaView>
+    <NavigationContainer>
+      <MainStack />
+    </NavigationContainer>
   </ApolloProvider>
 );
 
