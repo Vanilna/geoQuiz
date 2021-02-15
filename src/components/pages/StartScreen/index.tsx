@@ -1,23 +1,30 @@
 import React from 'react';
-import { SafeAreaView, ImageBackground, View } from 'react-native';
-import background from '@src/assets/img/world.jpg';
+import { View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+import WithBackground from '@templates/WithBackground';
 import Header from '@atoms/Header';
 import CustomButton from '@atoms/CustomButton';
 import { LEVELS } from '@src/constants/index';
-import styles from './styles';
 
-const StartScreen: React.FC = (): JSX.Element => (
-  <SafeAreaView style={styles.container}>
-    <ImageBackground source={background} style={styles.backgroundImage}>
-      <Header title="Test your Geo Knowlage" />
+const StartScreen: React.FC = (): JSX.Element => {
+  const navigation = useNavigation();
+
+  return (
+    <WithBackground backgroundImage={require('@src/assets/img/world.jpg')}>
+      <Header title="Test your Geo Knowledge" />
       <View>
         {LEVELS.map((level) => (
-          <CustomButton label={level} clickHandler={() => {}} key={level} />
+          <CustomButton
+            label={level}
+            clickHandler={() => navigation.navigate('QuestionScreen')}
+            key={level}
+          />
         ))}
       </View>
       <CustomButton label="Rules" clickHandler={() => {}} secondary />
-    </ImageBackground>
-  </SafeAreaView>
-);
+    </WithBackground>
+  );
+};
 
 export default StartScreen;
