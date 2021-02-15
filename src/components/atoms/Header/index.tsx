@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 import styles from '@atoms/Header/styles';
 
 type HeaderProps = {
-  title: string;
+  title: String;
 };
 
 const Header: React.FC<HeaderProps> = ({ title }): JSX.Element => (
