@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import StartScreen from '@pages/StartScreen';
+import QuestionScreen from '@pages/QuestionScreen';
 
 const Stack = createStackNavigator();
 
@@ -11,6 +12,7 @@ const MainStack: React.FC = (): JSX.Element => (
       component={StartScreen}
       options={{ headerShown: false }}
     />
+    <Stack.Screen name="QuestionScreen" component={QuestionScreen} />
   </Stack.Navigator>
 );
 
