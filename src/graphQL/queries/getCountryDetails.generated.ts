@@ -117,30 +117,43 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
-export type TestQueryVariables = Exact<{ [key: string]: never }>;
+export type GetCountryDetailsQueryVariables = Exact<{
+  countryCode: Scalars['ID'];
+}>;
 
-export type TestQuery = { __typename?: 'Query' } & {
-  country?: Maybe<
-    { __typename?: 'Country' } & Pick<
+export type CountryDetails =
+  | ({ __typename?: 'Country' } & Pick<
       Country,
-      'name' | 'native' | 'capital' | 'emoji' | 'currency'
+      'name' | 'code' | 'capital' | 'emoji' | 'currency'
     > & {
         languages: Array<
           { __typename?: 'Language' } & Pick<Language, 'code' | 'name'>
         >;
-      }
-  >;
+        continent: { __typename?: 'Continent' } & Pick<
+          Continent,
+          'code' | 'name'
+        >;
+      })
+  | null
+  | undefined;
+
+export type GetCountryDetailsQuery = { __typename?: 'Query' } & {
+  country?: Maybe<CountryDetails>;
 };
 
-export const TestDocument = gql`
-  query test {
-    country(code: "BR") {
+export const GetCountryDetailsDocument = gql`
+  query getCountryDetails($countryCode: ID!) {
+    country(code: $countryCode) {
       name
-      native
+      code
       capital
+      languages {
+        code
+        name
+      }
       emoji
       currency
-      languages {
+      continent {
         code
         name
       }
@@ -149,36 +162,50 @@ export const TestDocument = gql`
 `;
 
 /**
- * __useTestQuery__
+ * __useGetCountryDetailsQuery__
  *
- * To run a query within a React component, call `useTestQuery` and pass it any options that fit your needs.
- * When your component renders, `useTestQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetCountryDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCountryDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useTestQuery({
+ * const { data, loading, error } = useGetCountryDetailsQuery({
  *   variables: {
+ *      countryCode: // value for 'countryCode'
  *   },
  * });
  */
-export function useTestQuery(
-  baseOptions?: Apollo.QueryHookOptions<TestQuery, TestQueryVariables>,
+export function useGetCountryDetailsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetCountryDetailsQuery,
+    GetCountryDetailsQueryVariables
+  >,
 ) {
-  return Apollo.useQuery<TestQuery, TestQueryVariables>(
-    TestDocument,
-    baseOptions,
-  );
+  return Apollo.useQuery<
+    GetCountryDetailsQuery,
+    GetCountryDetailsQueryVariables
+  >(GetCountryDetailsDocument, baseOptions);
 }
-export function useTestLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<TestQuery, TestQueryVariables>,
+export function useGetCountryDetailsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetCountryDetailsQuery,
+    GetCountryDetailsQueryVariables
+  >,
 ) {
-  return Apollo.useLazyQuery<TestQuery, TestQueryVariables>(
-    TestDocument,
-    baseOptions,
-  );
+  return Apollo.useLazyQuery<
+    GetCountryDetailsQuery,
+    GetCountryDetailsQueryVariables
+  >(GetCountryDetailsDocument, baseOptions);
 }
-export type TestQueryHookResult = ReturnType<typeof useTestQuery>;
-export type TestLazyQueryHookResult = ReturnType<typeof useTestLazyQuery>;
-export type TestQueryResult = Apollo.QueryResult<TestQuery, TestQueryVariables>;
+export type GetCountryDetailsQueryHookResult = ReturnType<
+  typeof useGetCountryDetailsQuery
+>;
+export type GetCountryDetailsLazyQueryHookResult = ReturnType<
+  typeof useGetCountryDetailsLazyQuery
+>;
+export type GetCountryDetailsQueryResult = Apollo.QueryResult<
+  GetCountryDetailsQuery,
+  GetCountryDetailsQueryVariables
+>;

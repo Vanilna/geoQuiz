@@ -4,7 +4,7 @@ import { TouchableHighlight, Text } from 'react-native';
 import styles from '@atoms/CustomButton/styles';
 
 type CustomButtonProps = {
-  label: String;
+  label: string;
   clickHandler: () => void;
   secondary?: Boolean;
 };
