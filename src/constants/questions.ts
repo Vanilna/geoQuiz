@@ -1,39 +1,34 @@
-import { CountryDetails } from '@gql/queries/getCountryDetails.generated';
+import { Country } from '@gql/queries/getCountryDetails.generated';
 
 export type Question = {
-  generate: (x: CountryDetails) => string;
+  generate: (x: Country) => string;
 };
 
 export const QUESTIONS: Question[] = [
   {
-    generate: ({ name }: CountryDetails): string =>
-      `What flag does the ${name} have?`,
+    generate: ({ name }: Country): string => `What flag does the ${name} have?`,
   },
   {
-    generate: ({ name }: CountryDetails): string =>
-      `What is the capital of ${name}?`,
+    generate: ({ name }: Country): string => `What is the capital of ${name}?`,
   },
   {
-    generate: ({ name }: CountryDetails): string =>
+    generate: ({ name }: Country): string =>
       `What is the main language of ${name}?`,
   },
   {
-    generate: ({ emoji }: CountryDetails): string =>
-      `${emoji} - Who's flag it is?`,
+    generate: ({ emoji }: Country): string => `${emoji} - Who's flag it is?`,
   },
   {
-    generate: ({ capital }: CountryDetails): string =>
+    generate: ({ capital }: Country): string =>
       `In which country ${capital} is located?`,
   },
   {
-    generate: ({ name }: CountryDetails): string =>
-      `Where is ${name} is located?`,
+    generate: ({ name }: Country): string => `Where is ${name} is located?`,
   },
   {
-    generate: ({ code }: CountryDetails): string => `Code ${code} stands for:`,
+    generate: ({ code }: Country): string => `Code ${code} stands for:`,
   },
   {
-    generate: ({ name }: CountryDetails): string =>
-      `What is the currency of ${name}`,
+    generate: ({ name }: Country): string => `What is the currency of ${name}`,
   },
 ];
