@@ -1,14 +1,15 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
-// import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import client from '@gql/client';
-// import MainStack from '@navigation/MainStack';
 import App from '@navigation/MainStack';
 
 const AppWrapper: React.FC = (): JSX.Element => (
   <ApolloProvider client={client}>
-    <App />
+    <SafeAreaProvider>
+      <App />
+    </SafeAreaProvider>
   </ApolloProvider>
 );
 
